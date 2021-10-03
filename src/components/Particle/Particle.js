@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import React, { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
-import "./FireflyMaterial";
+import "./ParticleMaterial";
 
-export default function Fireflies({ count = 40, scale, position }) {
+export default function Particle({ count = 40, scale, position }) {
   const shader = useRef();
 
   const [positionArray, scaleArray, colorArray] = useMemo(() => {
@@ -25,7 +25,7 @@ export default function Fireflies({ count = 40, scale, position }) {
     }
     return [positionArray, scaleArray, colorArray];
   }, [count]);
-  console.log("positionArray", positionArray);
+  
   useFrame((state, delta) => {
     shader.current.time += delta / 2;
   });
@@ -51,7 +51,7 @@ export default function Fireflies({ count = 40, scale, position }) {
           itemSize={3}
         />
       </bufferGeometry>
-      <fireflyMaterial ref={shader} transparent depthWrite={false} />
+      <particleMaterial ref={shader} transparent depthWrite={false} />
     </points>
   );
 }

@@ -1,0 +1,21 @@
+.fallback {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #232323;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.loader {
+  width: 150px;
+}
+
+h1 {
+  color: white;
+  font-weight: 200;
+  font-size: 40px;
+}

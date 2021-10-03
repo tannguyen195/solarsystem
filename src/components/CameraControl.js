@@ -1,38 +1,65 @@
-import { PerspectiveCamera } from "@react-three/drei";
+
 import { useFrame, useThree } from "@react-three/fiber";
-import { useRef, useState, useEffect } from "react";
-import useScrollDirection from "../hooks/scrollDirection";
 import useStore from "../store/useStore";
-import * as THREE from "three";
-import { Vector3 } from "three";
 
 function CameraControl() {
-  const direction = useScrollDirection();
-  const cameraRef = useRef();
+  
 
   const { scene } = useThree();
-  console.log(direction);
 
-  const cameraPos = useStore((state) => state.cameraPos);
-  const cameraRos = useStore((state) => state.cameraRos);
 
-  const [position, setPosition] = useState([0, 0, 0]);
-  const [rotation, setRotation] = useState([0, 0, 0]);
+  const activePlanet = useStore((state) => state.activePlanet);
+  const activeCameraPlanet = useStore((state) => state.activeCameraPlanet);
+  const setActiveCameraPlanet = useStore(
+    (state) => state.setActiveCameraPlanet
+  );
 
-  useEffect(() => {
-    setPosition(cameraPos);
-    setRotation(cameraRos);
-  }, [cameraPos, cameraRos]);
+  const shouldUpdateCameraPosition = useStore(
+    (state) => state.shouldUpdateCameraPosition
+  );
+  const setUpdateCameraPosition = useStore(
+    (state) => state.setUpdateCameraPosition
+  );
 
-  // useFrame(({ camera }) => {
-  //   if (direction === false) {
-  //     //camera.position.lerp(new THREE.Vector3(0, 0, 0 - 1), 0.1);
+  useFrame(({ camera, controls }) => {
+    console.log(camera.position)
+    console.log(activePlanet, activeCameraPlanet);
 
-  //     //camera.lookAt(new THREE.Vector3(0, 0, 0));
+    //Update the camera target when new planet clicked
+    if (activePlanet !== activeCameraPlanet) {
+      setActiveCameraPlanet(activePlanet);
+    }
 
-  //     scene.orbitControls?.update();
-  //   }
-  // });
+    //Drive the camera to the view's position
+    if (shouldUpdateCameraPosition) {
+      const currentPlanet = scene?.getObjectByName(activePlanet);
+      if (currentPlanet) {
+        const currentPlanetPosition = currentPlanet?.position;
+        const currentPlanetRadius = currentPlanet.geometry.parameters.radius;
+
+        camera.position.lerp(
+          {
+            ...currentPlanetPosition,
+            z: currentPlanetPosition.z + 3 * currentPlanetRadius,
+          },
+          0.05
+        );
+        const diff = camera.position
+          .clone()
+          .sub(currentPlanetPosition)
+          .length();
+        if (diff < 3 * currentPlanetRadius) setUpdateCameraPosition(false);
+      }
+    }
+
+    //Update trackball target
+    if (activeCameraPlanet) {
+      const currentPlanetPosition =
+        scene?.getObjectByName(activeCameraPlanet)?.position;
+      scene.trackball?.target.lerp(currentPlanetPosition, 0.05);
+      scene.trackball?.update();
+    }
+  });
 
   return null;
 }
