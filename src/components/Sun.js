@@ -9,7 +9,7 @@ function Sun() {
   return (
     <mesh position={[0, 0, 0]}>
       <sphereBufferGeometry args={[sunRadius, 48, 48]} />
-      <meshPhongMaterial attach="material" {...texture} />
+      <meshPhongMaterial emissive='#fc9601' emissiveIntensity={.7} attach="material" {...texture} />
     </mesh>
   );
 }

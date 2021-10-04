@@ -9,12 +9,12 @@ function Sun() {
     map: process.env.PUBLIC_URL + "/texture_sun.jpeg",
   });
   useFrame((state, delta) => {
-    shader.current.time += delta ;
+    shader.current.time += delta;
   });
   return (
-    <mesh position={[0, 0, 0]}>
+    <mesh layers={0} position={[0, 0, 0]}>
       <sphereBufferGeometry args={[16, 30, 30]} />
-      <sunMaterial ref={shader}   />
+      <sunMaterial ref={shader} />
     </mesh>
   );
 }

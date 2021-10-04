@@ -10,11 +10,11 @@ import Lights from "./components/Lights";
 import TrackballControl from "./components/TrackballControl";
 import Fallback from "./components/Fallback/Fallback";
 import useStore from "./store/useStore";
+// import Effect from "./components/Effect";
 
+const Galaxy = lazy(() => import("./components/Galaxy"));
 const Sun = lazy(() => import("./components/Sun"));
 const SolarSystem = lazy(() => import("./components/SolarSystem"));
-const OrbitSystem = lazy(() => import("./components/OrbitSystem"));
-const SaturnRing = lazy(() => import("./components/SaturnRing"));
 const Particle = lazy(() => import("./components/Particle/Particle"));
 
 function App() {
@@ -23,13 +23,14 @@ function App() {
     <>
       <DestinationPanel />
       <Canvas
+        shadows
         colorManagement
         style={{ background: "#232323" }}
         camera={{ position: cameraPosition, near: 0.001, far: 100000 }}
       >
         <Lights />
         <CameraControl />
-
+        {/* <Effect /> */}
         <TrackballControl />
         <Html></Html>
         <Suspense
@@ -39,9 +40,9 @@ function App() {
             </Html>
           }
         >
+          <Galaxy />
           <SolarSystem />
-          <OrbitSystem />
-          <SaturnRing />
+
           <Sun />
           <Particle
             position={[0, -400, 0]}

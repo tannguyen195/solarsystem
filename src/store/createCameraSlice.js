@@ -20,7 +20,8 @@ const createCameraSlice = (set, get) => ({
   setUpdateCameraPosition: (payload) => {
     set(() => ({ shouldUpdateCameraPosition: payload }));
   },
-
+  
+//Init position
   cameraPos: new THREE.Vector3(
     66.68508708051569,
     62.688036623625365,

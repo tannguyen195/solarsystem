@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import useStore from "../store/useStore";
-
+import OrbitRing from "./OrbitRing";
 function Planet({
   name,
   rotationRate,
@@ -11,16 +11,22 @@ function Planet({
   texture,
   distance,
   axialTilt,
+  bumpMap,
+  normalMap,
+  orbitData,
 }) {
-  const planetTexture = useTexture({
+  const planetMaterial = useTexture({
     map: texture,
+    bumpMap: bumpMap,
+    normalMap: normalMap,
   });
+
   const ref = useRef();
   const activePlanet = useStore((state) => state.activePlanet);
 
   useFrame(({ scene }) => {
     const time = Date.now();
-    ref.current.rotation.y += rotationRate;
+    ref.current.rotation.y += rotationRate * 0.1; //scale by 1/10 ratation speed;
     if (name !== activePlanet) {
       ref.current.position.x =
         Math.sin(time * (1 / (orbitRate * 200)) + 10.0) * distance;
@@ -35,15 +41,24 @@ function Planet({
   });
 
   return (
-    <mesh
-      rotation={axialTilt}
-      name={name}
-      position={[distance, 0, 0]}
-      ref={ref}
-    >
-      <sphereBufferGeometry args={[size, 48, 48]} />
-      <meshStandardMaterial attach="material" {...planetTexture} />
-    </mesh>
+    <group>
+      <mesh
+        rotation={axialTilt}
+        name={name}
+        position={[distance, 0, 0]}
+        ref={ref}
+        castShadow
+      >
+        <sphereBufferGeometry args={[size, 48, 48]} />
+        <meshPhongMaterial
+          attach="material"
+          {...planetMaterial}
+          shininess={0}
+          bumpScale={0.3}
+        />
+      </mesh>{" "}
+      <OrbitRing {...orbitData} />
+    </group>
   );
 }
 

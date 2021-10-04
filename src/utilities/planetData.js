@@ -1,7 +1,7 @@
-import earthTexture from "../assets/textures/texture_earth_clouds.jpg";
-import moonTexture from "../assets/textures/texture_moon.jpeg";
+import earthTexture from "../assets/textures/texture_earth.jpg";
+import moonTexture from "../assets/textures/texture_moon.jpg";
 import venusTexture from "../assets/textures/texture_venus.jpeg";
-import mercuryTexture from "../assets/textures/texture_mercury.jpeg";
+import mercuryTexture from "../assets/textures/mercurymap.jpg";
 import jupiterTexture from "../assets/textures/texture_jupiter.jpeg";
 import saturnTexture from "../assets/textures/texture_saturn.jpeg";
 import uranusTexture from "../assets/textures/texture_uranus.jpeg";
@@ -18,46 +18,88 @@ import uranusThumbnail from "../assets/images/uranus.png";
 import neptuneThumbnail from "../assets/images/neptune.png";
 import marsThumbnail from "../assets/images/mars.png";
 
+import earthBumpmap from "../assets/textures/bumpmap_earth.jpg";
+import marsBumpmap from "../assets/textures/bumpmap_mars.jpg";
+import mercuryBumpmap from "../assets/textures/bumpmap_mercury.jpg";
+import moonBumpmap from "../assets/textures/bumpmap_moon.jpg";
+import venusBumpmap from "../assets/textures/bumpmap_venus.jpg";
+
+import earthNormal from "../assets/textures/normal_earth.png";
+import marsNormal from "../assets/textures/normal_mars.jpg";
+import mercuryNormal from "../assets/textures/normal_mercury.png";
+import moonNormal from "../assets/textures/normal_moon.png";
+import saturnNormal from "../assets/textures/normal_saturn.png";
+import venusNormal from "../assets/textures/normal_venus.png";
+
+import earthSpecular from "../assets/textures/specular_earth.png";
+import earthCloud from "../assets/textures/texture_earth_cloud.png";
 export const sunRadius = 25;
 export const orbitWidth = 0.01;
+export const earthData = {
+  name: "earth",
+  texture: earthTexture,
+  orbitRate: 365.2565,
+  rotationRate: -0.015,
+  distance: 15 + sunRadius,
+  size: 1,
+  axialTilt: [23.4 * (Math.PI / 180), 0, 0],
+  orbitData: {
+    size: 15 + sunRadius + orbitWidth,
+    innerDiameter: 15 + sunRadius - orbitWidth,
+    facets: 320,
+    color: 0xffffff,
+    name: "earthOrbit",
+    distance: 0,
+  },
+  thumbnail: earthThumbnail,
+  bumpMap: earthBumpmap,
+  specularMap: earthSpecular,
+  normalMap: earthNormal,
+  earthCloud: earthCloud,
+};
+
+export const moonData = {
+  name: "moon",
+  texture: moonTexture,
+  orbitRate: 29.5,
+  rotationRate: -0.01,
+  distance: 1.8,
+  size: 0.27,
+  axialTilt: [6.68 * (Math.PI / 180), 0, 0],
+  orbitData: {
+    size: 1.8 + orbitWidth,
+    innerDiameter: 1.8 - orbitWidth,
+    facets: 320,
+    color: 0xffffff,
+    name: "moonOrbit",
+    distance: 0,
+  },
+  thumbnail: moonThumbnail,
+  bumpMap: moonBumpmap,
+  normalMap: moonNormal,
+};
 
 export const planets = [
-  {
-    name: "earth",
-    texture: earthTexture,
-    orbitRate: 365.2565,
-    rotationRate: -0.015,
-    distance: 15 + sunRadius,
-    size: 1,
-    axialTilt: [23.4 * (Math.PI / 180), 0, 0],
-    orbitData: {
-      size: 15 + sunRadius + orbitWidth,
-      innerDiameter: 15 + sunRadius - orbitWidth,
-      facets: 320,
-      color: 0xffffff,
-      name: "earthOrbit",
-      distance: 0,
-    },
-    thumbnail: earthThumbnail,
-  },
-  {
-    name: "moon",
-    texture: moonTexture,
-    orbitRate: 29.5,
-    rotationRate: -0.01,
-    distance: 1.8,
-    size: .27,
-    axialTilt: [6.68 * (Math.PI / 180), 0, 0],
-    orbitData: {
-      size: 1.8 + orbitWidth,
-      innerDiameter: 1.8 - orbitWidth,
-      facets: 320,
-      color: 0xffffff,
-      name: "moonOrbit",
-      distance: 0,
-    },
-    thumbnail: moonThumbnail,
-  },
+  // {
+  //   name: "moon",
+  //   texture: moonTexture,
+  //   orbitRate: 29.5,
+  //   rotationRate: -0.01,
+  //   distance: 1.8,
+  //   size: 0.27,
+  //   axialTilt: [6.68 * (Math.PI / 180), 0, 0],
+  //   orbitData: {
+  //     size: 1.8 + orbitWidth,
+  //     innerDiameter: 1.8 - orbitWidth,
+  //     facets: 320,
+  //     color: 0xffffff,
+  //     name: "moonOrbit",
+  //     distance: 0,
+  //   },
+  //   thumbnail: moonThumbnail,
+  //   bumpMap: moonBumpmap,
+  //   normalMap: moonNormal,
+  // },
   {
     name: "mercury",
     texture: mercuryTexture,
@@ -75,6 +117,8 @@ export const planets = [
       distance: 0,
     },
     thumbnail: mercuryThumbnail,
+    bumpMap: mercuryBumpmap,
+    normalMap: mercuryNormal,
   },
   {
     name: "venus",
@@ -93,6 +137,8 @@ export const planets = [
       distance: 0,
     },
     thumbnail: venusThumbnail,
+    bumpMap: venusBumpmap,
+    normalMap: venusNormal,
   },
   {
     name: "mars",
@@ -111,6 +157,8 @@ export const planets = [
       distance: 0,
     },
     thumbnail: marsThumbnail,
+    bumpMap: marsBumpmap,
+    normalMap: marsNormal,
   },
   {
     name: "jupiter",
@@ -129,6 +177,8 @@ export const planets = [
       distance: 0,
     },
     thumbnail: jupiterThumbnail,
+    bumpMap: marsBumpmap,
+    normalMap: saturnNormal,
   },
   {
     name: "saturn",
@@ -147,6 +197,8 @@ export const planets = [
       distance: 0,
     },
     thumbnail: saturnThumbnail,
+    bumpMap: marsBumpmap,
+    normalMap: saturnNormal,
   },
   {
     name: "uranus",
@@ -165,6 +217,8 @@ export const planets = [
       distance: 0,
     },
     thumbnail: uranusThumbnail,
+    bumpMap: marsBumpmap,
+    normalMap: saturnNormal,
   },
   {
     name: "neptune",
@@ -183,5 +237,7 @@ export const planets = [
       distance: 0,
     },
     thumbnail: neptuneThumbnail,
+    bumpMap: marsBumpmap,
+    normalMap: saturnNormal,
   },
 ];

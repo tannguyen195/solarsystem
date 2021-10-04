@@ -1,12 +1,8 @@
-
 import { useFrame, useThree } from "@react-three/fiber";
 import useStore from "../store/useStore";
 
 function CameraControl() {
-  
-
   const { scene } = useThree();
-
 
   const activePlanet = useStore((state) => state.activePlanet);
   const activeCameraPlanet = useStore((state) => state.activeCameraPlanet);
@@ -21,15 +17,12 @@ function CameraControl() {
     (state) => state.setUpdateCameraPosition
   );
 
-  useFrame(({ camera, controls }) => {
-    console.log(camera.position)
-    console.log(activePlanet, activeCameraPlanet);
-
+  useFrame(({ camera }) => {
     //Update the camera target when new planet clicked
     if (activePlanet !== activeCameraPlanet) {
       setActiveCameraPlanet(activePlanet);
     }
-
+    
     //Drive the camera to the view's position
     if (shouldUpdateCameraPosition) {
       const currentPlanet = scene?.getObjectByName(activePlanet);
