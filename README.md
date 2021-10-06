@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available at
+https://tannguyen195.github.io/solarsystem/
+
 ## Available Scripts
 
 In the project directory, you can run:
