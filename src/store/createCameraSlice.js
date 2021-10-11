@@ -6,9 +6,18 @@ const createCameraSlice = (set, get) => ({
     set(() => ({ isControl: payload }));
   },
 
-  activePlanet: null,
+  activePlanet: {
+    activePlanetName: null,
+    activePlanetRadius: null,
+  },
   setActivePlanet: (payload) => {
-    set(() => ({ activePlanet: payload }));
+    console.log("payload", payload);
+    set(() => ({
+      activePlanet: {
+        activePlanetName: payload.name,
+        activePlanetRadius: payload.size,
+      },
+    }));
   },
 
   activeCameraPlanet: null,
@@ -20,8 +29,8 @@ const createCameraSlice = (set, get) => ({
   setUpdateCameraPosition: (payload) => {
     set(() => ({ shouldUpdateCameraPosition: payload }));
   },
-  
-//Init position
+
+  //Init position
   cameraPos: new THREE.Vector3(
     66.68508708051569,
     62.688036623625365,

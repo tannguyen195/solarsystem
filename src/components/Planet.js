@@ -11,23 +11,18 @@ function Planet({
   texture,
   distance,
   axialTilt,
-  bumpMap,
-  normalMap,
   orbitData,
+  planetGeometry,
 }) {
-  const planetMaterial = useTexture({
-    map: texture,
-    bumpMap: bumpMap,
-    normalMap: normalMap,
-  });
-
+  const planetMaterial = useTexture({ map: texture });
   const ref = useRef();
-  const activePlanet = useStore((state) => state.activePlanet);
+  const activePlanetName = useStore((state) => state.activePlanet.activePlanetName);
 
   useFrame(({ scene }) => {
     const time = Date.now();
     ref.current.rotation.y += rotationRate * 0.1; //scale by 1/10 ratation speed;
-    if (name !== activePlanet) {
+
+    if (name !== activePlanetName) {
       ref.current.position.x =
         Math.sin(time * (1 / (orbitRate * 200)) + 10.0) * distance;
       ref.current.position.z =
@@ -43,13 +38,14 @@ function Planet({
   return (
     <group>
       <mesh
+        scale={size}
         rotation={axialTilt}
         name={name}
         position={[distance, 0, 0]}
         ref={ref}
         castShadow
       >
-        <sphereBufferGeometry args={[size, 48, 48]} />
+        {planetGeometry}
         <meshPhongMaterial
           attach="material"
           {...planetMaterial}

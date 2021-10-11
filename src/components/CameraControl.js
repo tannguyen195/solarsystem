@@ -5,7 +5,9 @@ function CameraControl() {
   const { scene } = useThree();
 
   const activePlanet = useStore((state) => state.activePlanet);
+
   const activeCameraPlanet = useStore((state) => state.activeCameraPlanet);
+  
   const setActiveCameraPlanet = useStore(
     (state) => state.setActiveCameraPlanet
   );
@@ -19,16 +21,19 @@ function CameraControl() {
 
   useFrame(({ camera }) => {
     //Update the camera target when new planet clicked
-    if (activePlanet !== activeCameraPlanet) {
-      setActiveCameraPlanet(activePlanet);
+
+    if (activePlanet.activePlanetName !== activeCameraPlanet) {
+      setActiveCameraPlanet(activePlanet.activePlanetName);
     }
-    
+
     //Drive the camera to the view's position
     if (shouldUpdateCameraPosition) {
-      const currentPlanet = scene?.getObjectByName(activePlanet);
+      const currentPlanet = scene?.getObjectByName(
+        activePlanet.activePlanetName
+      );
+      const currentPlanetRadius = activePlanet.activePlanetRadius;
       if (currentPlanet) {
         const currentPlanetPosition = currentPlanet?.position;
-        const currentPlanetRadius = currentPlanet.geometry.parameters.radius;
 
         camera.position.lerp(
           {

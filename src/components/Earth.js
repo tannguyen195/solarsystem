@@ -4,8 +4,7 @@ import { useTexture } from "@react-three/drei";
 import useStore from "../store/useStore";
 import * as THREE from "three";
 import OrbitRing from "./OrbitRing";
-import { earthData, moonData } from "../utilities/planetData";
-import Planet from "./Planet";
+import { earthData } from "../utilities/planetData";
 function Earth({
   name,
   rotationRate,
@@ -17,6 +16,7 @@ function Earth({
   bumpMap,
   specularMap,
   earthCloud,
+  moon,
 }) {
   const planetMaterial = useTexture({
     map: texture,
@@ -27,13 +27,14 @@ function Earth({
     map: earthCloud,
   });
   const ref = useRef();
-  const activePlanet = useStore((state) => state.activePlanet);
+  const activePlanetName = useStore(
+    (state) => state.activePlanet.activePlanetName
+  );
 
   useFrame(({ scene }) => {
     const time = Date.now();
-    ref.current.rotation.y += rotationRate * 0.1; //scale by 1/10 ratation speed
-
-    if (name !== activePlanet) {
+    if (activePlanetName !== name) {
+      ref.current.rotation.y += rotationRate * 0.1; //scale by 1/10 ratation speed
       ref.current.position.x =
         Math.sin(time * (1 / (orbitRate * 200)) + 10.0) * distance;
       ref.current.position.z =
@@ -67,7 +68,7 @@ function Earth({
           />
         </mesh>
       </mesh>
-      <Planet {...moonData} />
+      {moon}
       <OrbitRing {...earthData.orbitData} />
     </group>
   );

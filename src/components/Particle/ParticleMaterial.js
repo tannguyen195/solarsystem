@@ -7,7 +7,7 @@ export default class ParticleMaterial extends THREE.ShaderMaterial {
       uniforms: {
         uTime: { value: 0 },
         uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-        uSize: { value: 5000 },
+        uSize: { value: 3000 },
       },
       vertexShader: `
       uniform float uPixelRatio;
