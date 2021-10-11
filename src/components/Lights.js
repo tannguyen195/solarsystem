@@ -11,14 +11,10 @@ function Lights() {
     <>
       <ambientLight intensity={0.3} />
       <pointLight
-        castShadow
+        
         color="rgb(255, 220, 180)"
         intensity={1.5}
-        shadow-bias={0.0001}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-        shadow-camera-visible={true}
-        shadow-darkness={0.2}
+     
       />
     </>
   );

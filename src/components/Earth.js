@@ -5,6 +5,7 @@ import useStore from "../store/useStore";
 import * as THREE from "three";
 import OrbitRing from "./OrbitRing";
 import { earthData } from "../utilities/planetData";
+
 function Earth({
   name,
   rotationRate,
@@ -16,7 +17,6 @@ function Earth({
   bumpMap,
   specularMap,
   earthCloud,
-  moon,
 }) {
   const planetMaterial = useTexture({
     map: texture,
@@ -30,7 +30,7 @@ function Earth({
   const activePlanetName = useStore(
     (state) => state.activePlanet.activePlanetName
   );
-
+  
   useFrame(({ scene }) => {
     const time = Date.now();
     if (activePlanetName !== name) {
@@ -49,7 +49,6 @@ function Earth({
         name={name}
         position={[distance, 0, 0]}
         ref={ref}
-        castShadow
       >
         <sphereBufferGeometry args={[size, 48, 48]} />
         <meshPhongMaterial
@@ -68,7 +67,7 @@ function Earth({
           />
         </mesh>
       </mesh>
-      {moon}
+      
       <OrbitRing {...earthData.orbitData} />
     </group>
   );

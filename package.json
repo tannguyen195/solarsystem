@@ -1,18 +1,17 @@
 {
   "homepage": "http://tannguyen195.github.io/solarsystem",
   "name": "solarsystem",
+  "author": "Tan Nguyen <tan.nguyen19596@gmail.com>",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-three/cannon": "^3.1.2",
+    "@react-spring/three": "^9.3.0",
     "@react-three/drei": "^7.12.3",
     "@react-three/fiber": "^7.0.7",
-    "@react-three/flex": "^0.7.0",
     "@react-three/postprocessing": "^2.0.5",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@use-gesture/react": "^10.0.0",
     "lerp": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -50,8 +49,6 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-macros": "^3.1.0",
-    "gh-pages": "^3.2.3",
-    "glslify": "^7.1.1"
+    "gh-pages": "^3.2.3"
   }
 }
