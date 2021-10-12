@@ -1,6 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 import useStore from "../store/useStore";
 import useDeviceDetector from "../hooks/deviceDetector";
 function CameraControl({ isLoading }) {
@@ -15,7 +14,10 @@ function CameraControl({ isLoading }) {
   //Moving camera when first launch
   const [initialMoving, setInitialMoving] = useState(true);
 
- 
+  useEffect(() => {
+    setActiveCameraPlanet(activePlanet);
+    setUpdateCameraPosition(true);
+  }, [activePlanet]);
 
   useFrame(({ camera }) => {
     //Update the camera when initialization

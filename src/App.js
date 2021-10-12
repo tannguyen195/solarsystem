@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Suspense, lazy, useState } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useProgress, Stats } from "@react-three/drei";
 
@@ -9,7 +9,6 @@ import TrackballControl from "./components/TrackballControl";
 import Fallback from "./components/Fallback/Fallback";
 import DestinationPanel from "./components/DestinationPanel/DestinationPanel";
 import useStore from "./store/useStore";
-import { useEffect } from "react/cjs/react.development";
 import PlanetDetail from "./components/PlanetDetail/PlanetDetail";
 
 const Scene = lazy(() => import("./components/Scene"));
@@ -23,6 +22,10 @@ function App() {
   function CustomLoader() {
     const { progress } = useProgress();
 
+    useEffect(() => {
+      //Update when loading finish
+      if (progress === 100) onLoading(false);
+    }, [progress]);
 
     return <Fallback progress={progress} />;
   }
