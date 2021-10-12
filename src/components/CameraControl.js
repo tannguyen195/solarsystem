@@ -16,8 +16,10 @@ function CameraControl({ isLoading }) {
   const [initialMoving, setInitialMoving] = useState(true);
 
   useEffect(() => {
-    setActiveCameraPlanet(activePlanet);
-    setUpdateCameraPosition(true);
+    if (activePlanet) {
+      setActiveCameraPlanet(activePlanet);
+      setUpdateCameraPosition(true);
+    }
   }, [activePlanet]);
 
   useFrame(({ camera }) => {

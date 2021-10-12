@@ -23,10 +23,6 @@ function App() {
   function CustomLoader() {
     const { progress } = useProgress();
 
-    useEffect(() => {
-      //Update when loading finish
-      if (progress === 100) onLoading(false);
-    }, [progress]);
 
     return <Fallback progress={progress} />;
   }
