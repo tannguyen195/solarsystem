@@ -45,7 +45,7 @@ function App() {
       >
         <Stats />
         <Lights />
-        
+        <CameraControl isLoading={isLoading} />
         {/* <Effect /> */}
         <TrackballControl />
         <Suspense fallback={null}>
