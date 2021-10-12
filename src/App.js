@@ -20,23 +20,13 @@ function App() {
   //Loading on first initalization
   const [isLoading, onLoading] = useState(true);
 
-  function CustomLoader() {
-    const { progress } = useProgress();
-
-    useEffect(() => {
-      //Update when loading finish
-      if (progress === 100) onLoading(false);
-    }, [progress]);
-
-    return <Fallback progress={progress} />;
-  }
 
   return (
     <>
       <div className="bg" />
       <PlanetDetail />
       <DestinationPanel isLoading={isLoading} />
-      <CustomLoader />
+    
 
       <Canvas
         colorManagement
