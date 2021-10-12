@@ -15,12 +15,7 @@ function CameraControl({ isLoading }) {
   //Moving camera when first launch
   const [initialMoving, setInitialMoving] = useState(true);
 
-  useEffect(() => {
-    if (activePlanet) {
-      setActiveCameraPlanet(activePlanet);
-      setUpdateCameraPosition(true);
-    }
-  }, [activePlanet]);
+ 
 
   useFrame(({ camera }) => {
     //Update the camera when initialization
