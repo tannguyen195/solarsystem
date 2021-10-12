@@ -20,12 +20,12 @@
   color: white;
   font-weight: 200;
   font-size: 40px;
-  font-family: Awakening;
+  font-family: "Noto Sans Mono", monospace;
 }
 
 .progress {
   color: white;
-  font-family: Noto;
+  font-family: "Noto Sans Mono", monospace;
 }
 
 .loadingBar {

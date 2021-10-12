@@ -2,6 +2,7 @@
   position: absolute;
   z-index: 2;
   height: 100%;
+  font-family: 'Noto Sans Mono', monospace;
 }
 
 .option {
@@ -16,7 +17,6 @@
 .name {
   text-transform: capitalize;
   color: #fff;
-  font-family: Noto;
 }
 
 .planet {

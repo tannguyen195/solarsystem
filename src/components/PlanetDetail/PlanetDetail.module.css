@@ -3,7 +3,7 @@
   z-index: 20;
   right: 2vw;
   top: 3vw;
-
+  font-family: 'Noto Sans Mono', monospace;
   color: white;
 }
 
@@ -14,11 +14,11 @@
   font-size: 40px;
   letter-spacing: -2px;
   margin-bottom: 8px;
-  font-family: Noto;
+  
   font-weight: 700;
 }
 .desc {
-  font-family: Noto;
+ 
   width: 350px;
   font-size: 14px;
 }
@@ -26,12 +26,12 @@
   margin-bottom: 20px;
 }
 .detailTitle {
-  font-family: Noto;
+  
   font-weight: 900;
   font-size: 14px;
 }
 .value {
-  font-family: Noto;
+  
   font-size: 20px;
 }
 

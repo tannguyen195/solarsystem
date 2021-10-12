@@ -2,9 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Anton", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Noto Sans Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 0.4s ease-in-out;
@@ -23,28 +21,4 @@ canvas {
 
 .bg {
   position: absolute;
-}
-
-@font-face {
-  font-family: "Noto";
-  src: local("Noto"),
-    url(./assets/fonts/Noto/NotoSansMono-Regular.ttf) format("truetype");
-}
-@font-face {
-  font-family: "Noto";
-  font-weight: 700;
-  src: local("Noto"),
-    url(./assets/fonts/Noto/NotoSansMono-Bold.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Noto";
-  font-weight: 900;
-  src: local("Noto"),
-    url(./assets/fonts/Noto/NotoSansMono-Black.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Awakening";
-  src: local("Awakening"), url(./assets/fonts/awakening.ttf) format("truetype");
 }
