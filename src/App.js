@@ -34,7 +34,22 @@ function App() {
   return (
     <>
       <div className="bg" />
-     
+    
+
+      <Canvas
+        colorManagement
+        style={{ background: "#232323" }}
+        camera={{ position: cameraPosition, near: 0.001, far: 900000 }}
+      >
+        <Stats />
+        <Lights />
+        <CameraControl isLoading={isLoading} />
+        {/* <Effect /> */}
+        <TrackballControl />
+        <Suspense fallback={null}>
+          <Scene />
+        </Suspense>
+      </Canvas>
     </>
   );
 }
