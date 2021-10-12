@@ -2,7 +2,8 @@ import { planets, earthData, moonData } from "../utilities/planetData";
 import Earth from "./Earth";
 import Planet from "./Planet";
 import SaturnRing from "./SaturnRing";
-
+import Moon from "./Moon";
+import Sun from "./Sun";
 function SolarSystem() {
   const planetGeometry = <sphereBufferGeometry args={[1, 40, 40]} />;
   // const moon = (
@@ -10,13 +11,13 @@ function SolarSystem() {
   // );
   return (
     <group>
-      <Earth key={earthData.name} {...earthData} />
-    
-      <Planet
-        key={moonData.name}
+      <Sun />
+      <Earth
+        key={earthData.name}
+        {...earthData}
         planetGeometry={planetGeometry}
-        {...moonData}
       />
+      <Moon key={moonData.name} planetGeometry={planetGeometry} {...moonData} />
       {planets.map((planet) => {
         return (
           <Planet

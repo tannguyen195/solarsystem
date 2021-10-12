@@ -8,22 +8,43 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 0.4s ease-in-out;
-
 }
 
 html,
 body,
-#root {
-  width: 100%;
-  height: 100%;
+#root,
+.bg,
+canvas {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
-canvas {
-  outline: none;
-  border: none;
+.bg {
+  position: absolute;
 }
 
+@font-face {
+  font-family: "Noto";
+  src: local("Noto"),
+    url(./assets/fonts/Noto/NotoSansMono-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Noto";
+  font-weight: 700;
+  src: local("Noto"),
+    url(./assets/fonts/Noto/NotoSansMono-Bold.ttf) format("truetype");
+}
 
+@font-face {
+  font-family: "Noto";
+  font-weight: 900;
+  src: local("Noto"),
+    url(./assets/fonts/Noto/NotoSansMono-Black.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Awakening";
+  src: local("Awakening"), url(./assets/fonts/awakening.ttf) format("truetype");
+}

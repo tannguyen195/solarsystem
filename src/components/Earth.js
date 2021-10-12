@@ -12,11 +12,12 @@ function Earth({
   orbitRate,
   size,
   texture,
-  distance,
   axialTilt,
   bumpMap,
   specularMap,
   earthCloud,
+  distanceScale,
+  planetGeometry,
 }) {
   const planetMaterial = useTexture({
     map: texture,
@@ -27,30 +28,31 @@ function Earth({
     map: earthCloud,
   });
   const ref = useRef();
-  const activePlanetName = useStore(
-    (state) => state.activePlanet.activePlanetName
-  );
-  
+  const activePlanetName = useStore((state) => state.activePlanet?.name);
+
   useFrame(({ scene }) => {
     const time = Date.now();
     if (activePlanetName !== name) {
-      ref.current.rotation.y += rotationRate * 0.1; //scale by 1/10 ratation speed
-      ref.current.position.x =
-        Math.sin(time * (1 / (orbitRate * 200)) + 10.0) * distance;
-      ref.current.position.z =
-        Math.cos(time * (1 / (orbitRate * 200)) + 10.0) * distance;
+      if (activePlanetName !== "moon") {
+        ref.current.rotation.y += rotationRate * 0.1; //scale by 1/10 ratation speed
+        ref.current.position.x =
+          Math.sin(time * (1 / (orbitRate * 200)) + 10.0) * distanceScale;
+        ref.current.position.z =
+          Math.cos(time * (1 / (orbitRate * 200)) + 10.0) * distanceScale;
+      }
     }
   });
 
   return (
     <group>
       <mesh
+        scale={size}
         rotation={axialTilt}
         name={name}
-        position={[distance, 0, 0]}
+        position={[distanceScale, 0, 0]}
         ref={ref}
       >
-        <sphereBufferGeometry args={[size, 48, 48]} />
+        {planetGeometry}
         <meshPhongMaterial
           attach="material"
           {...planetMaterial}
@@ -67,7 +69,7 @@ function Earth({
           />
         </mesh>
       </mesh>
-      
+
       <OrbitRing {...earthData.orbitData} />
     </group>
   );

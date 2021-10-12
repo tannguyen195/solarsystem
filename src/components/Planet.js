@@ -10,16 +10,14 @@ function Planet({
   orbitRate,
   size,
   texture,
-  distance,
+  distanceScale,
   axialTilt,
   orbitData,
   planetGeometry,
 }) {
   const planetMaterial = useTexture({ map: texture });
   const ref = useRef();
-  const activePlanetName = useStore(
-    (state) => state.activePlanet.activePlanetName
-  );
+  const activePlanetName = useStore((state) => state.activePlanet?.name);
 
   useFrame(({ scene }) => {
     const time = Date.now();
@@ -27,9 +25,9 @@ function Planet({
 
     if (name !== activePlanetName) {
       ref.current.position.x =
-        Math.sin(time * (1 / (orbitRate * 200)) + 10.0) * distance;
+        Math.sin(time * (1 / (orbitRate * 200)) + 10.0) * distanceScale;
       ref.current.position.z =
-        Math.cos(time * (1 / (orbitRate * 200)) + 10.0) * distance;
+        Math.cos(time * (1 / (orbitRate * 200)) + 10.0) * distanceScale;
       if (name === "moon") {
         const earthPosition = scene.getObjectByName("earth")?.position;
         ref.current.position.x = ref.current.position.x + earthPosition.x;
@@ -44,7 +42,7 @@ function Planet({
         scale={size}
         rotation={axialTilt}
         name={name}
-        position={[distance, 0, 0]}
+        position={[distanceScale, 0, 0]}
         ref={ref}
       >
         {planetGeometry}

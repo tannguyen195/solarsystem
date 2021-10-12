@@ -10,7 +10,7 @@ function Fallback({ progress }) {
   const opacity = useSpring({
     from: { opacity: 1 },
     to: { opacity: 0 },
-    config: { duration: 2000 },
+    config: { duration: 2000},
   });
 
   useEffect(() => {
@@ -30,12 +30,12 @@ function Fallback({ progress }) {
       style={progress === 100 ? { ...opacity, display: displayState } : {}}
       className={styles.fallback}
     >
-      <h1>GENERATING SOLAR SYSTEM </h1>
+      <div className={styles.text}>GENERATING SOLAR SYSTEM </div>
       <div
         style={{ transform: `scaleX(${transformState})` }}
         className={styles.loadingBar}
       />
-      <span>{progress} %</span>
+      <span className={styles.progress}>{parseInt(progress)} %</span>
     </animated.div>
   );
 }

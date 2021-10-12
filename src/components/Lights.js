@@ -9,7 +9,7 @@ softShadows({
 function Lights() {
   return (
     <>
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.1} />
       <pointLight
         
         color="rgb(255, 220, 180)"
