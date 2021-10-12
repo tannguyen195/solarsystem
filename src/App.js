@@ -34,7 +34,9 @@ function App() {
   return (
     <>
       <div className="bg" />
-    
+      <PlanetDetail />
+      <DestinationPanel isLoading={isLoading} />
+      <CustomLoader />
 
       <Canvas
         colorManagement
