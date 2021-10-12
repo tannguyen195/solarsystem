@@ -10,7 +10,6 @@ function PlanetDetail() {
     setActivePlanetState(activePlanet);
   }, [activePlanet]);
 
-  console.log(activePlanetState);
   return (
     <>
       {activePlanetState && (
