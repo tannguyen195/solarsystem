@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { extend } from "@react-three/fiber";
-import vertex from "./shaderSun/vertex.glsl.js";
-import fragment from "./shaderSun/fragment.glsl.js";
+import vertex from "./vertex.glsl.js";
+import fragment from "./fragment.glsl.js";
 
-export default class SunMaterial extends THREE.ShaderMaterial {
+export default class TextMaterial extends THREE.ShaderMaterial {
   constructor() {
     super({
       extensions: {
@@ -15,22 +15,11 @@ export default class SunMaterial extends THREE.ShaderMaterial {
         resolution: {
           value: new THREE.Vector4(),
         },
-        
       },
       vertexShader: vertex(),
       fragmentShader: fragment(),
     });
   }
-
-
-  get time() {
-    return this.uniforms.time.value
-  }
-
-  set time(v) {
-    this.uniforms.time.value = v
-  }
-
 }
 
-extend({ SunMaterial });
+extend({ TextMaterial });

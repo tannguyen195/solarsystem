@@ -3,15 +3,15 @@ import Earth from "./Earth";
 import Planet from "./Planet";
 import SaturnRing from "./SaturnRing";
 import Moon from "./Moon";
-import Sun from "./Sun";
+import Sun from "./Sun/Sun";
+
 function SolarSystem() {
   const planetGeometry = <sphereBufferGeometry args={[1, 40, 40]} />;
-  // const moon = (
-  //   <Planet key={moonData.name} planetGeometry={planetGeometry} {...moonData} />
-  // );
+
   return (
     <group>
       <Sun />
+
       <Earth
         key={earthData.name}
         {...earthData}

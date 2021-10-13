@@ -1,17 +1,23 @@
 .panel {
   position: absolute;
   z-index: 2;
-  height: 100%;
-  font-family: 'Noto Sans Mono', monospace;
+  width: 100%;
+  bottom: 2vh;
+  font-family: "Noto Sans Mono", monospace;
 }
-
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .option {
   display: flex;
   align-items: center;
-  height: 10vh;
+  width: 8vw;
   padding: 10px;
   cursor: pointer;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .name {
@@ -21,14 +27,11 @@
 
 .planet {
   height: 100%;
+  width: 100%;
 }
 
-.container {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.active {
+  transform: scale(1.2) !important; 
 }
 
 @media only screen and (max-width: 600px) {
@@ -37,6 +40,7 @@
     height: auto;
     bottom: 5vh;
     overflow-x: scroll;
+    overflow-y: hidden;
   }
   .container {
     flex-direction: row;

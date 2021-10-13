@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { extend } from "@react-three/fiber";
-import vertex from "./shaderSun/vertex.glsl.js";
-import fragment from "./shaderSun/fragment.glsl.js";
+import vertex from "./shaderPerlin/vertex.glsl.js";
+import fragment from "./shaderPerlin/fragment.glsl.js";
 
-export default class SunMaterial extends THREE.ShaderMaterial {
+export default class PerlinMaterial extends THREE.ShaderMaterial {
   constructor() {
     super({
       extensions: {
@@ -12,25 +12,32 @@ export default class SunMaterial extends THREE.ShaderMaterial {
       side: THREE.DoubleSide,
       uniforms: {
         time: { value: 0 },
+        uPerlin: { value: null },
         resolution: {
           value: new THREE.Vector4(),
         },
-        
       },
       vertexShader: vertex(),
       fragmentShader: fragment(),
     });
   }
 
-
   get time() {
-    return this.uniforms.time.value
+    return this.uniforms.time.value;
   }
 
   set time(v) {
-    this.uniforms.time.value = v
+    this.uniforms.time.value = v;
+  }
+
+  get uPerlin() {
+    return this.uniforms.uPerlin.value;
+  }
+
+  set uPerlin(v) {
+    this.uniforms.uPerlin.value = v;
   }
 
 }
 
-extend({ SunMaterial });
+extend({ PerlinMaterial });

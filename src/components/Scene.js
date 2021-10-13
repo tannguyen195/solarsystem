@@ -1,21 +1,22 @@
 import React, { lazy } from "react";
 
+// import TextGenerator from "./TextGenerator/TextGenerator";
+
 const Galaxy = lazy(() => import("./Galaxy"));
 const SolarSystem = lazy(() => import("./SolarSystem"));
-const Particle = lazy(() => import("./Particle/Particle"));
+//const Star = lazy(() => import("./Star/Star"));
 
 function Scene() {
   return (
     <>
-     
       <Galaxy />
       <SolarSystem />
-      
-      <Particle
+
+      {/* <Star
         position={[0, -400, 0]}
         scale={new Array(3).fill(300)}
         count={2000}
-      />
+      /> */}
     </>
   );
 }

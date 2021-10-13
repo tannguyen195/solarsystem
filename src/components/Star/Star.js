@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import React, { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
-import "./ParticleMaterial";
+import "./StarMaterial";
 
 export default function Particle({ count = 40, scale, position }) {
   const shader = useRef();
@@ -25,7 +25,7 @@ export default function Particle({ count = 40, scale, position }) {
     }
     return [positionArray, scaleArray, colorArray];
   }, [count]);
-  
+
   useFrame((state, delta) => {
     shader.current.time += delta / 2;
   });
@@ -51,7 +51,7 @@ export default function Particle({ count = 40, scale, position }) {
           itemSize={3}
         />
       </bufferGeometry>
-      <particleMaterial ref={shader} transparent depthWrite={false} />
+      <starMaterial ref={shader} transparent depthWrite={false} />
     </points>
   );
 }

@@ -1,3 +1,4 @@
+import sunThumbnail from "../../assets/images/sun.png";
 import earthThumbnail from "../../assets/images/earth.png";
 import moonThumbnail from "../../assets/images/moon.png";
 import venusThumbnail from "../../assets/images/venus.png";
@@ -11,56 +12,52 @@ import marsThumbnail from "../../assets/images/mars.png";
 export const planets = [
   {
     id: 1,
+    name: "sun",
+    thumbnail: sunThumbnail,
+  },
+  {
+    id: 2,
     name: "earth",
-    size: 1,
     thumbnail: earthThumbnail,
   },
   {
     name: "moon",
-    size: 0.27,
     thumbnail: moonThumbnail,
-    id: 2,
-  },
-  {
-    name: "mercury",
-    size: 1 / 2.6114,
-    thumbnail: mercuryThumbnail,
     id: 3,
   },
   {
-    name: "venus",
-    size: 1 / 1.05292553191,
-    thumbnail: venusThumbnail,
+    name: "mercury",
+    thumbnail: mercuryThumbnail,
     id: 4,
   },
   {
-    name: "mars",
-    size: 0.53,
-    thumbnail: marsThumbnail,
+    name: "venus",
+    thumbnail: venusThumbnail,
     id: 5,
   },
   {
-    name: "jupiter",
-    size: 10.97,
-    thumbnail: jupiterThumbnail,
+    name: "mars",
+    thumbnail: marsThumbnail,
     id: 6,
   },
   {
-    name: "saturn",
-    size: 9.14,
-    thumbnail: saturnThumbnail,
+    name: "jupiter",
+    thumbnail: jupiterThumbnail,
     id: 7,
   },
   {
-    name: "uranus",
-    size: 3.98,
-    thumbnail: uranusThumbnail,
+    name: "saturn",
+    thumbnail: saturnThumbnail,
     id: 8,
   },
   {
-    name: "neptune",
-    size: 3.86,
-    thumbnail: neptuneThumbnail,
+    name: "uranus",
+    thumbnail: uranusThumbnail,
     id: 9,
+  },
+  {
+    name: "neptune",
+    thumbnail: neptuneThumbnail,
+    id: 10,
   },
 ];

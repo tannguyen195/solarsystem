@@ -5,9 +5,7 @@ import { planets } from "./data";
 
 import {
   useTransition,
-  useSpring,
   useChain,
-  config,
   animated,
   useSpringRef,
 } from "@react-spring/web";
@@ -19,22 +17,12 @@ function DestinationPanel({ isLoading }) {
     if (isLoading === false) set(true);
   }, [isLoading]);
 
-  const springApi = useSpringRef();
-
-  const { size } = useSpring({
-    ref: springApi,
-    config: config.stiff,
-    from: { size: "20%" },
-    to: {
-      size: open ? "100%" : "20%",
-    },
-  });
 
   const transApi = useSpringRef();
 
   const transition = useTransition(open ? planets : [], {
     ref: transApi,
-    trail: 400 / 4,
+    trail: 400 / 70,
     from: { opacity: 0, scale: 0 },
     enter: (item) => (next) =>
       next({
@@ -46,7 +34,7 @@ function DestinationPanel({ isLoading }) {
   });
 
   // This will orchestrate the two animations above, comment the last arg and it creates a sequence
-  useChain(open ? [springApi, transApi] : [transApi, springApi], [
+  useChain(open ? [ transApi] : [transApi], [
     0,
     open ? 0.1 : 0.6,
   ]);
