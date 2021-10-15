@@ -3,7 +3,7 @@ import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { DoubleSide } from "three";
 import ringtexture from "../assets/textures/texture_jupiter.jpeg";
-function SaturnRing() {
+function SaturnRing({ layer }) {
   const ref = useRef();
 
   const ringTexture = useTexture({
@@ -18,6 +18,7 @@ function SaturnRing() {
 
   return (
     <mesh
+      layer={layer}
       ref={ref}
       position={[0, 0, 0]}
       name={"saturnRing"}

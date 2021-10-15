@@ -16,9 +16,30 @@ import earthCloud from "../assets/textures/texture_earth_cloud.png";
 export const sunRadius = 25;
 export const orbitWidth = 0.01;
 export const distanceScale = 50;
-
+export const galaxyData = {
+  name: `The Milky Way`,
+  desc: `The Milky Way is the galaxy that includes the Solar System, with the name describing the galaxy's appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye.`,
+  data: [
+    {
+      title: "Radius",
+      value: "52,850 light years",
+    },
+    {
+      title:"Age",
+      value: "13.51 billion years"
+    },
+    {
+      title:"Number of stars",
+      value: "100–400 billion"
+    },
+    
+  ],
+  layers: 11,
+  size: 1,
+};
 export const sunData = {
   name: "sun",
+  layers: 1,
   size: sunRadius,
   orbitRate: 230,
   data: [
@@ -48,6 +69,7 @@ export const sunData = {
 };
 export const earthData = {
   name: "earth",
+  layers: 2,
   texture: earthTexture,
   orbitRate: 365.2565,
   rotationRate: -0.015,
@@ -96,6 +118,7 @@ export const earthData = {
 
 export const moonData = {
   name: "moon",
+  layers: 3,
   texture: moonTexture,
   orbitRate: 29.5,
   rotationRate: -0.01,
@@ -136,6 +159,7 @@ export const moonData = {
 export const planets = [
   {
     name: "mercury",
+    layers: 4,
     texture: mercuryTexture,
     orbitRate: 87.969,
     rotationRate: -0.0061,
@@ -186,6 +210,7 @@ export const planets = [
   },
   {
     name: "venus",
+    layers: 5,
     texture: venusTexture,
     orbitRate: 225,
     rotationRate: 0.00006172839,
@@ -236,6 +261,7 @@ export const planets = [
   },
   {
     name: "mars",
+    layers: 6,
     texture: marsTexture,
     orbitRate: 687,
     rotationRate: -0.015,
@@ -287,6 +313,7 @@ export const planets = [
   },
   {
     name: "jupiter",
+    layers: 7,
     texture: jupiterTexture,
     orbitRate: 4333,
     rotationRate: -0.036,
@@ -337,6 +364,7 @@ export const planets = [
   },
   {
     name: "saturn",
+    layers: 8,
     texture: saturnTexture,
     orbitRate: 10759,
     rotationRate: -0.03529,
@@ -389,6 +417,7 @@ export const planets = [
   },
   {
     name: "uranus",
+    layers: 9,
     texture: uranusTexture,
     orbitRate: 30660,
     rotationRate: -0.0211,
@@ -441,6 +470,7 @@ export const planets = [
   },
   {
     name: "neptune",
+    layers: 10,
     texture: neptuneTexture,
     orbitRate: 60266,
     rotationRate: -0.0225,

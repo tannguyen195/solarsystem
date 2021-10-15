@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import useStore from "../store/useStore";
 import OrbitRing from "./OrbitRing";
+import SaturnRing from "./SaturnRing";
 
 function Planet({
   name,
@@ -13,6 +14,7 @@ function Planet({
   distanceScale,
   axialTilt,
   orbitData,
+  layers,
   planetGeometry,
 }) {
   const planetMaterial = useTexture({ map: texture });
@@ -39,6 +41,7 @@ function Planet({
   return (
     <group>
       <mesh
+        layers={layers}
         scale={size}
         rotation={axialTilt}
         name={name}
@@ -53,7 +56,8 @@ function Planet({
           bumpScale={0.3}
         />
       </mesh>{" "}
-      <OrbitRing {...orbitData} />
+      <OrbitRing {...orbitData} layers={layers} />
+      {name === "saturn" && <SaturnRing layers={layers} />}
     </group>
   );
 }

@@ -27,7 +27,7 @@ export default function Particle({ count = 40, scale, position }) {
   }, [count]);
 
   useFrame((state, delta) => {
-    shader.current.time += delta / 2;
+    shader.current.time += delta ;
   });
   return (
     <points position={position} scale={scale} key={count}>

@@ -8,56 +8,65 @@ import saturnThumbnail from "../../assets/images/saturn.png";
 import uranusThumbnail from "../../assets/images/uranus.png";
 import neptuneThumbnail from "../../assets/images/neptune.png";
 import marsThumbnail from "../../assets/images/mars.png";
+import galaxyThumbnail from "../../assets/images/galaxy.png";
 
-export const planets = [
+export const panel2 = [
   {
     id: 1,
-    name: "sun",
-    thumbnail: sunThumbnail,
+    name: "The Milky Way",
+    thumbnail: galaxyThumbnail,
   },
   {
     id: 2,
-    name: "earth",
-    thumbnail: earthThumbnail,
+    name: "sun",
+    thumbnail: sunThumbnail,
   },
   {
     name: "moon",
     thumbnail: moonThumbnail,
     id: 3,
   },
+];
+
+export const panel1 = [
   {
     name: "mercury",
     thumbnail: mercuryThumbnail,
-    id: 4,
+    id: 1,
   },
   {
     name: "venus",
     thumbnail: venusThumbnail,
-    id: 5,
+    id: 2,
+  },
+  {
+    id: 3,
+    name: "earth",
+    thumbnail: earthThumbnail,
   },
   {
     name: "mars",
     thumbnail: marsThumbnail,
-    id: 6,
+    id: 4,
   },
   {
     name: "jupiter",
     thumbnail: jupiterThumbnail,
-    id: 7,
+    id: 5,
   },
   {
     name: "saturn",
     thumbnail: saturnThumbnail,
-    id: 8,
+    id: 6,
   },
   {
     name: "uranus",
     thumbnail: uranusThumbnail,
-    id: 9,
+    id: 7,
   },
   {
     name: "neptune",
     thumbnail: neptuneThumbnail,
-    id: 10,
+    id: 8,
   },
 ];

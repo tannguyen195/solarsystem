@@ -1,2 +1,11 @@
- const sunRadius = 109;
-const orbitWidth = 0.1;
+export const GALAXY_LAYER = 1;
+export const SUN_LAYER = 2;
+export const MOON_LAYER = 3;
+export const EARTH_LAYER = 4;
+export const MERCURY_LAYER = 5;
+export const VENUS_LAYER = 6;
+export const MARS_LAYER = 7;
+export const JUPITER_LAYER = 8;
+export const SATURN_LAYER = 9;
+export const URANUS_LAYER = 10;
+export const NEPTUNE_LAYER = 11;

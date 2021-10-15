@@ -4,6 +4,7 @@
   width: 100%;
   bottom: 2vh;
   font-family: "Noto Sans Mono", monospace;
+  overflow: hidden;
 }
 .container {
   position: relative;
@@ -14,7 +15,7 @@
 .option {
   display: flex;
   align-items: center;
-  width: 8vw;
+  width: 7vw;
   padding: 10px;
   cursor: pointer;
   flex-direction: column;
@@ -23,6 +24,7 @@
 .name {
   text-transform: capitalize;
   color: #fff;
+  white-space: nowrap;
 }
 
 .planet {
@@ -31,7 +33,7 @@
 }
 
 .active {
-  transform: scale(1.2) !important; 
+  transform: scale(1.2) !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -58,4 +60,19 @@
   .name {
     font-size: 12px;
   }
+}
+
+.subPanel {
+  position: absolute;
+  z-index: 20;
+  top: 5vh;
+  left: 2vw;
+}
+.subOption {
+  display: flex;
+  align-items: center;
+  width: 5vw;
+  padding: 10px;
+  cursor: pointer;
+  flex-direction: row;
 }

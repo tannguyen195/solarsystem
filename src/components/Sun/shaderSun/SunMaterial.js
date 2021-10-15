@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { extend } from "@react-three/fiber";
-import vertex from "./shaderSun/vertex.glsl.js";
-import fragment from "./shaderSun/fragment.glsl.js";
+import vertex from "./vertex.glsl.js";
+import fragment from "./fragment.glsl.js";
 
 export default class SunMaterial extends THREE.ShaderMaterial {
   constructor() {

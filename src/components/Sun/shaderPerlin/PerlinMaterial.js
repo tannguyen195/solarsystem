@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { extend } from "@react-three/fiber";
-import vertex from "./shaderPerlin/vertex.glsl.js";
-import fragment from "./shaderPerlin/fragment.glsl.js";
+import vertex from "./vertex.glsl.js";
+import fragment from "./fragment.glsl.js";
 
 export default class PerlinMaterial extends THREE.ShaderMaterial {
   constructor() {

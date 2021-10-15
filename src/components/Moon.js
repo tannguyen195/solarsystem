@@ -12,7 +12,8 @@ function Moon({
   distanceScale,
   axialTilt,
   planetGeometry,
-  orbitData,
+  layer,
+  sphere,
 }) {
   const planetMaterial = useTexture({ map: texture });
   const ref = useRef();
@@ -32,13 +33,15 @@ function Moon({
         Math.cos(time * (1 / (orbitRate * 200)) + 10.0) * distanceScale;
 
       const earthPosition = scene.getObjectByName("earth")?.position;
-      ref.current.position.x = earthPosition.x + ref.current.position.x/10;
-      ref.current.position.z = earthPosition.z + ref.current.position.z/10;
+      ref.current.position.x = earthPosition.x + ref.current.position.x / 10;
+      ref.current.position.z = earthPosition.z + ref.current.position.z / 10;
     }
   });
 
   return (
     <mesh
+      geometry={sphere}
+      layers={layer}
       scale={size}
       rotation={axialTilt}
       name={name}

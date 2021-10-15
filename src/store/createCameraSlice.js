@@ -1,27 +1,6 @@
 import * as THREE from "three";
 
 const createCameraSlice = (set, get) => ({
-  isControl: false,
-  setControl: (payload) => {
-    set(() => ({ isControl: payload }));
-  },
-
-  activePlanet: null,
-  setActivePlanet: (payload) => {
-    set(() => ({
-      activePlanet: payload,
-    }));
-  },
-
-  activeCameraPlanet: null,
-  setActiveCameraPlanet: (payload) => {
-    set(() => ({ activeCameraPlanet: payload }));
-  },
-
-  shouldUpdateCameraPosition: true,
-  setUpdateCameraPosition: (payload) => {
-    set(() => ({ shouldUpdateCameraPosition: payload }));
-  },
 
   //Init position
   cameraPos: new THREE.Vector3(

@@ -44,8 +44,9 @@ function Earth({
   });
 
   return (
-    <group>
+    <>
       <mesh
+        layers={2}
         scale={size}
         rotation={axialTilt}
         name={name}
@@ -60,7 +61,7 @@ function Earth({
           bumpScale={0.005}
           specular={new THREE.Color("grey")}
         />
-        <mesh>
+        <mesh layers={2}>
           <sphereBufferGeometry args={[size + 0.005, 48, 48]} />
           <meshPhongMaterial
             {...cloudMaterial}
@@ -70,8 +71,8 @@ function Earth({
         </mesh>
       </mesh>
 
-      <OrbitRing {...earthData.orbitData} />
-    </group>
+      <OrbitRing {...earthData.orbitData} layers={2} />
+    </>
   );
 }
 

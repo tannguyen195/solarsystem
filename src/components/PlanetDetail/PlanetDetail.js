@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import useStore from "../../store/useStore";
 import styles from "./PlanetDetail.module.css";
-
+import { galaxyData } from "../../utilities/planetData";
 function PlanetDetail() {
   const activePlanet = useStore((state) => state.activePlanet);
   const [activePlanetState, setActivePlanetState] = useState(null);
+  const toggleGalaxy = useStore((state) => state.toggleGalaxy);
 
   useEffect(() => {
     setActivePlanetState(activePlanet);
-  }, [activePlanet]);
-
+    if (!activePlanet && toggleGalaxy) setActivePlanetState(galaxyData);
+  }, [activePlanet, toggleGalaxy]);
+  console.log(activePlanetState);
   return (
     <>
       {activePlanetState && (
@@ -20,7 +22,7 @@ function PlanetDetail() {
           </div>
           <div className={styles.section}>
             <div className={styles.flex}>
-              {activePlanetState.data.map((item) => (
+              {activePlanetState.data?.map((item) => (
                 <div key={item.title} className={styles.detail}>
                   <div className={styles.detailTitle}>{item.title}</div>
                   <div className={styles.value}>{item.value}</div>

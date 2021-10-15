@@ -2,9 +2,9 @@ import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-import "./SunMaterial";
-import "./PerlinMaterial";
-import "./AroundMaterial";
+import "./shaderSun/SunMaterial";
+import "./shaderPerlin/PerlinMaterial";
+import "./shaderAround/AroundMaterial";
 
 function Sun() {
   const shaderPerlin = useRef();
@@ -30,11 +30,14 @@ function Sun() {
     shaderPerlin.current.uPerlin = target.texture;
     cubeCamera.current.update(state.gl, state.scene);
   });
-
+  const sunGeometry = useMemo(
+    () => <sphereBufferGeometry args={[25, 40, 40]} />,
+    []
+  );
   return (
-    <group>
-      <mesh name="sun" position={[0, 0, 0]}>
-        <sphereBufferGeometry args={[25, 40, 40]} />
+    <>
+      <mesh layers={1} name="sun" position={[0, 0, 0]}>
+        {sunGeometry}
         <sunMaterial ref={shaderSun} />
       </mesh>
 
@@ -43,17 +46,18 @@ function Sun() {
         <aroundMaterial ref={shaderAround} />
       </mesh> */}
 
-      <mesh>
+      <mesh layers={1}>
         <cubeCamera
+          layers={1}
           name="cubeCamera"
           ref={cubeCamera}
           position={[0, 0, 0]}
           args={[0.1, 26, target]}
         ></cubeCamera>
-        <sphereBufferGeometry args={[25, 40, 40]} />
+        {sunGeometry}
         <perlinMaterial ref={shaderPerlin} />
       </mesh>
-    </group>
+    </>
   );
 }
 

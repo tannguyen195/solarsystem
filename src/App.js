@@ -1,9 +1,9 @@
 import "./App.css";
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useProgress, Stats } from "@react-three/drei";
 
-import CameraControl from "./components/CameraControl";
+import CameraControl from "./components/CameraControl/index";
 import Lights from "./components/Lights";
 import TrackballControl from "./components/TrackballControl";
 import Fallback from "./components/Fallback/Fallback";
@@ -15,16 +15,14 @@ const Scene = lazy(() => import("./components/Scene"));
 
 function App() {
   const cameraPosition = useStore((state) => state.cameraPos);
+  const setIsRendered = useStore((state) => state.setIsRendered);
 
-  //Loading on first initalization
-  const [isLoading, onLoading] = useState(true);
-
-  function CustomLoader() {
+  function Loader() {
     const { progress } = useProgress();
-
     useEffect(() => {
       //Update when loading finish
-      if (progress === 100) onLoading(false);
+      console.log(progress);
+      if (progress === 100) setIsRendered(true);
     }, [progress]);
 
     return <Fallback progress={progress} />;
@@ -32,25 +30,32 @@ function App() {
 
   return (
     <>
-      <div className="bg" />
       <PlanetDetail />
-      <DestinationPanel isLoading={isLoading} />
-      <CustomLoader />
+      <DestinationPanel />
+      <Loader />
+  
+        <Canvas
+          colorManagement
+          style={{ background: "#000" }}
+          camera={{
+            position: cameraPosition,
+            near: 0.001,
+            far: 900000,
+            layers: 0,
+          }}
+        >
+          <Stats />
+          <Lights />
 
-      <Canvas
-        colorManagement
-        style={{ background: "#232323" }}
-        camera={{ position: cameraPosition, near: 0.001, far: 900000 }}
-      >
-        <Stats />
-        <Lights />
-        <CameraControl isLoading={isLoading} />
-        {/* <Effect /> */}
-        <TrackballControl />
-        <Suspense fallback={null}>
-          <Scene />
-        </Suspense>
-      </Canvas>
+          <CameraControl />
+          {/* <Effect /> */}
+          <TrackballControl />
+
+          <Suspense fallback={null}>
+            <Scene />
+          </Suspense>
+        </Canvas>
+    
     </>
   );
 }
