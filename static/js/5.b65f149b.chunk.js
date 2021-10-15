@@ -1,2 +1,0 @@
-(this.webpackJsonpsolarsystem=this.webpackJsonpsolarsystem||[]).push([[5],{69:function(t,n,e){"use strict";e.r(n);var s=e(5),c=e(11),r=Object(s.lazy)((function(){return e.e(3).then(e.bind(null,68))})),u=Object(s.lazy)((function(){return e.e(4).then(e.bind(null,67))}));n.default=function(){return Object(c.jsxs)(c.Fragment,{children:[Object(c.jsx)(r,{}),Object(c.jsx)(u,{})]})}}}]);
-//# sourceMappingURL=5.b65f149b.chunk.js.map
