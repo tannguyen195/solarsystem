@@ -1,0 +1,2 @@
+(this.webpackJsonpsolarsystem=this.webpackJsonpsolarsystem||[]).push([[6],{74:function(e,n,t){"use strict";t.r(n);var s=t(5),c=t(10),r=Object(s.lazy)((function(){return t.e(5).then(t.bind(null,72))})),l=Object(s.lazy)((function(){return t.e(3).then(t.bind(null,73))})),u=Object(s.lazy)((function(){return Promise.all([t.e(4),t.e(7)]).then(t.bind(null,71))}));n.default=function(){return Object(c.jsxs)(c.Fragment,{children:[Object(c.jsx)(l,{}),Object(c.jsx)(u,{}),Object(c.jsx)(r,{})]})}}}]);
+//# sourceMappingURL=6.5c8ec285.chunk.js.map
