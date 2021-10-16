@@ -5,12 +5,17 @@ import * as THREE from "three";
 import "./shaderSun/SunMaterial";
 import "./shaderPerlin/PerlinMaterial";
 import "./shaderAround/AroundMaterial";
+import useStore from "../../store/useStore";
 
 function Sun() {
   const shaderPerlin = useRef();
   const shaderSun = useRef();
+  const shaderAround = useRef();
 
   const cubeCamera = useRef();
+
+
+  const activePlanet = useStore((state) => state.activePlanet);
 
   const [target] = useMemo(() => {
     const target = new THREE.WebGLCubeRenderTarget(256, {
@@ -26,8 +31,8 @@ function Sun() {
     shaderSun.current.time += delta;
 
     shaderPerlin.current.time += delta;
-
     shaderPerlin.current.uPerlin = target.texture;
+
     cubeCamera.current.update(state.gl, state.scene);
   });
   const sunGeometry = useMemo(
@@ -40,11 +45,12 @@ function Sun() {
         {sunGeometry}
         <sunMaterial ref={shaderSun} />
       </mesh>
-
-      {/* <mesh position={[0, 0, 0]}>
-        <sphereBufferGeometry args={[17, 48, 48]} />
-        <aroundMaterial ref={shaderAround} />
-      </mesh> */}
+      {activePlanet && activePlanet.name === "sun" && (
+        <mesh>
+          <sphereBufferGeometry args={[30, 30, 30]} />
+          <aroundMaterial ref={shaderAround} />
+        </mesh>
+      )}
 
       <mesh layers={1}>
         <cubeCamera
@@ -55,7 +61,7 @@ function Sun() {
           args={[0.1, 26, target]}
         ></cubeCamera>
         {sunGeometry}
-        <perlinMaterial  ref={shaderPerlin} />
+        <perlinMaterial ref={shaderPerlin} />
       </mesh>
     </>
   );

@@ -2,7 +2,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useState, useEffect } from "react";
 
 import useStore from "../../store/useStore";
-
+import * as layers from "../../utilities/constants";
 function LayersControl() {
   const toggleGalaxy = useStore((state) => state.toggleGalaxy);
   const setToggleGalaxy = useStore((state) => state.setToggleGalaxy);
@@ -12,26 +12,26 @@ function LayersControl() {
   const [move, setMoving] = useState(true);
   const { camera } = useThree();
 
-
   useEffect(() => {
     if (toggleGalaxy) {
-      camera.layers.set(11);
-
+      camera.layers.disableAll();
+      camera.layers.enable(layers.BACKGROUND_LAYER);
+      camera.layers.enable(layers.GALAXY_LAYER);
       setMoving(true);
       setActivePlanet(null);
     } else {
       camera.layers.enableAll();
-      camera.layers.disable(11);
-      camera.layers.disable(14);
+      camera.layers.disable(layers.GALAXY_LAYER);
+
       setMoving(true);
     }
-  }, [toggleGalaxy]);
+  }, [camera.layers, setActivePlanet, toggleGalaxy]);
 
   useEffect(() => {
     if (activePlanet) {
       setToggleGalaxy(false);
     }
-  }, [activePlanet]);
+  }, [activePlanet, setToggleGalaxy]);
 
   useFrame(({ camera, scene }) => {
     //Update the camera when toggle galaxy view
@@ -42,7 +42,7 @@ function LayersControl() {
       if (move) {
         camera.position.lerp({ x: 0, y: 3, z: 5 }, 0.1);
         const diff = camera.position.clone().sub(position).length();
-        if (diff < 5.1 && diff > 5) setMoving(false);
+        if (diff < 6) setMoving(false);
       }
     }
   });

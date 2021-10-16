@@ -31,6 +31,7 @@ function SolarSystem() {
       />
 
       <Moon key={moonData.name} planetGeometry={planetGeometry} {...moonData} />
+
       {planets.map((planet) => {
         return (
           <Planet
@@ -40,6 +41,7 @@ function SolarSystem() {
           />
         );
       })}
+
     </>
   );
 }

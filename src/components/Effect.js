@@ -24,7 +24,7 @@ const Effect = () => {
       <renderPass attachArray="passes" scene={scene} camera={camera} />
       <unrealBloomPass
         attachArray="passes"
-        args={[undefined, 1, 1, 0.9]}
+        args={[undefined, .5, 1, 0]}
       />
     </effectComposer>
   );

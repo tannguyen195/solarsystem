@@ -150,10 +150,10 @@ export default function fragment() {
       return sum;
     }
   void main() {
-    vec4 p = vec4(vPosition*.4,time*0.005);
+    vec4 p = vec4(vPosition*.4,time*0.05);
     float noisy = fbm(p);
 
-    vec4 p1 = vec4(vPosition*.2,time*.005);
+    vec4 p1 = vec4(vPosition*.2,time*.05);
     float spots = max(snoise(p1), 0.);
 
     gl_FragColor = vec4(noisy);

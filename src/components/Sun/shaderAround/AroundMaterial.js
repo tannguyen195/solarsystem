@@ -8,31 +8,21 @@ export default class AroundMaterial extends THREE.ShaderMaterial {
     super({
       side: THREE.BackSide,
       uniforms: {
-        time: { value: 0 },
-        resolution: {
-          value: new THREE.Vector4(),
-        },
+        viewVector: { type: "v3", value: new THREE.Vector3(0, 0, 0) },
       },
       vertexShader: vertex(),
       fragmentShader: fragment(),
       blending: THREE.AdditiveBlending,
+      transparent: true,
     });
   }
 
-  get time() {
-    return this.uniforms.time.value;
+  get viewVector() {
+    return this.uniforms.viewVector.value;
   }
 
-  set time(v) {
-    this.uniforms.time.value = v;
-  }
-
-  get uPerlin() {
-    return this.uniforms.uPerlin.value;
-  }
-
-  set uPerlin(v) {
-    this.uniforms.uPerlin.value = v;
+  set viewVector(v) {
+    this.uniforms.viewVector.value = v;
   }
 }
 

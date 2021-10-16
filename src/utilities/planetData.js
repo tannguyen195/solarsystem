@@ -14,6 +14,7 @@ import earthNormal from "../assets/textures/normal_earth.png";
 import earthSpecular from "../assets/textures/specular_earth.png";
 import earthCloud from "../assets/textures/texture_earth_cloud.png";
 
+import * as layers from "./constants";
 export const sunRadius = 25;
 export const orbitWidth = 0.01;
 export const distanceScale = 50;
@@ -34,12 +35,12 @@ export const galaxyData = {
       value: "100–400 billion",
     },
   ],
-  layers: 11,
+  layers: layers.GALAXY_LAYER,
   size: 1,
 };
 export const sunData = {
   name: "sun",
-  layers: 1,
+  layers: layers.SUN_LAYER,
   size: sunRadius,
   orbitRate: 230,
   texture: sunTexture,
@@ -70,7 +71,7 @@ export const sunData = {
 };
 export const earthData = {
   name: "earth",
-  layers: 2,
+  layers: layers.EARTH_LAYER,
   texture: earthTexture,
   orbitRate: 365.2565,
   rotationRate: -0.015,
@@ -111,7 +112,7 @@ export const earthData = {
 
 export const moonData = {
   name: "moon",
-  layers: 3,
+  layers: layers.MOON_LAYER,
   texture: moonTexture,
   orbitRate: 29.5,
   rotationRate: -0.01,
@@ -144,7 +145,7 @@ export const moonData = {
 export const planets = [
   {
     name: "mercury",
-    layers: 4,
+    layers: layers.MERCURY_LAYER,
     texture: mercuryTexture,
     orbitRate: 87.969,
     rotationRate: -0.0061,
@@ -187,7 +188,7 @@ export const planets = [
   },
   {
     name: "venus",
-    layers: 5,
+    layers: layers.VENUS_LAYER,
     texture: venusTexture,
     orbitRate: 225,
     rotationRate: 0.00006172839,
@@ -238,7 +239,7 @@ export const planets = [
   },
   {
     name: "mars",
-    layers: 6,
+    layers: layers.MARS_LAYER,
     texture: marsTexture,
     orbitRate: 687,
     rotationRate: -0.015,
@@ -282,7 +283,7 @@ export const planets = [
   },
   {
     name: "jupiter",
-    layers: 7,
+    layers: layers.JUPITER_LAYER,
     texture: jupiterTexture,
     orbitRate: 4333,
     rotationRate: -0.036,
@@ -325,7 +326,7 @@ export const planets = [
   },
   {
     name: "saturn",
-    layers: 8,
+    layers: layers.SUN_LAYER,
     texture: saturnTexture,
     orbitRate: 10759,
     rotationRate: -0.03529,
@@ -370,7 +371,7 @@ export const planets = [
   },
   {
     name: "uranus",
-    layers: 9,
+    layers: layers.URANUS_LAYER,
     texture: uranusTexture,
     orbitRate: 30660,
     rotationRate: -0.0211,
@@ -415,7 +416,7 @@ export const planets = [
   },
   {
     name: "neptune",
-    layers: 10,
+    layers: layers.NEPTUNE_LAYER,
     texture: neptuneTexture,
     orbitRate: 60266,
     rotationRate: -0.0225,

@@ -6,6 +6,9 @@ import {
   sunData,
   galaxyData,
 } from "./planetData";
+
+const { detect } = require("detect-browser");
+
 export function convertCoordArrayToVec3(array) {
   return new THREE.Vector3(array[0], array[1], array[2]);
 }
@@ -17,7 +20,14 @@ export function getPlanetByName(planetName) {
   });
 }
 
-const { detect } = require('detect-browser');
-
 export const browser = detect();
 
+export function generatePointCircle(radius) {
+  const segmentCount = 128;
+  let vertices = [];
+  for (let i = 0; i <= segmentCount; i++) {
+    let theta = (i / segmentCount) * Math.PI * 2;
+    vertices.push([Math.cos(theta) * radius, 0, Math.sin(theta) * radius]);
+  }
+  return vertices;
+}

@@ -11,6 +11,8 @@ import DestinationPanel from "./components/DestinationPanel/DestinationPanel";
 import useStore from "./store/useStore";
 import PlanetDetail from "./components/PlanetDetail/PlanetDetail";
 import useDeviceDetector from "./hooks/deviceDetector";
+import spaceSound from "./assets/sounds/space.mp3";
+const space = new Audio(spaceSound);
 
 //import Effect from "./components/Effect";
 
@@ -22,12 +24,22 @@ function App() {
   const cameraPosition = useStore((state) => state.cameraPos);
   const setIsRendered = useStore((state) => state.setIsRendered);
 
+  function playAudio(audio, volume = 1, loop = false) {
+    audio.currentTime = 0;
+    audio.volume = volume;
+    audio.loop = loop;
+    audio.play();
+  }
+
   function Loader() {
     const { progress } = useProgress();
     useEffect(() => {
       //Update when loading finish
 
-      if (progress === 100) setIsRendered(true);
+      if (progress === 100) {
+        void playAudio(space, 0.5, true);
+        setIsRendered(true);
+      }
     }, [progress]);
 
     return <Fallback progress={progress} />;

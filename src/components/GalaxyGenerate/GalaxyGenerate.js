@@ -17,6 +17,7 @@ function GalaxyGenerate({
   layers = 11,
 }) {
   const shader = useRef();
+  const galaxy = useRef();
   const [positions, colors, scales, randomness] = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
@@ -81,10 +82,11 @@ function GalaxyGenerate({
   ]);
   useFrame((state, delta) => {
     shader.current.uTime += delta;
+
   });
   return (
     <points name="The Milky Way" layers={layers}>
-      <bufferGeometry>
+      <bufferGeometry ref={galaxy}>
         <bufferAttribute
           attachObject={["attributes", "position"]}
           count={count}
@@ -111,7 +113,7 @@ function GalaxyGenerate({
         />
       </bufferGeometry>
 
-      <galaxyMaterial ref={shader} depthWrite={false} vertexColors={true} />
+      <galaxyMaterial ref={shader} />
     </points>
   );
 }
