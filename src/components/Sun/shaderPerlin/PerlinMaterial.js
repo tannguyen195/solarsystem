@@ -7,7 +7,7 @@ export default class PerlinMaterial extends THREE.ShaderMaterial {
   constructor() {
     super({
       extensions: {
-        derivatives: "#extension GL_OES_standard_derivatives: enable",
+        derivatives: true,
       },
       side: THREE.DoubleSide,
       uniforms: {

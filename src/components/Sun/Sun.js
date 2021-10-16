@@ -55,7 +55,7 @@ function Sun() {
           args={[0.1, 26, target]}
         ></cubeCamera>
         {sunGeometry}
-        <perlinMaterial ref={shaderPerlin} />
+        <perlinMaterial  ref={shaderPerlin} />
       </mesh>
     </>
   );

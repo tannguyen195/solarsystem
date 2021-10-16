@@ -11,19 +11,18 @@ function LayersControl() {
   //Moving camera when first launch
   const [move, setMoving] = useState(true);
   const { camera } = useThree();
-  useEffect(() => {
-    camera.layers.enableAll();
-    camera.layers.disable(11);
-  }, []);
+
 
   useEffect(() => {
     if (toggleGalaxy) {
       camera.layers.set(11);
+
       setMoving(true);
       setActivePlanet(null);
     } else {
       camera.layers.enableAll();
       camera.layers.disable(11);
+      camera.layers.disable(14);
       setMoving(true);
     }
   }, [toggleGalaxy]);

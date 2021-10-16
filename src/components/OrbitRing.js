@@ -1,28 +1,36 @@
-import { DoubleSide } from "three";
+import { useMemo } from "react";
+import * as THREE from "three";
 
-function OrbitRing({
-  size,
-  innerDiameter,
-  facets,
-  color,
-  name,
-  distance,
-  layers,
-}) {
+
+
+function OrbitRing({ radius }) {
+  const segmentCount = 128;
+
+  const [vertices] = useMemo(() => {
+    const vertices = new Float32Array(segmentCount * 3);
+    for (let i = 0; i <= segmentCount; i++) {
+      let theta = (i / segmentCount) * Math.PI * 2;
+      new THREE.Vector3(
+        Math.cos(theta) * radius,
+        0,
+        Math.sin(theta) * radius
+      ).toArray(vertices, i * 3);
+    }
+
+    return [vertices];
+  }, [radius]);
+
   return (
-    <mesh
-      layers={layers}
-      name={name}
-      rotation={[Math.PI / 2, 0, 0]}
-      position={[distance, 0, 0]}
-    >
-      <ringBufferGeometry args={[size, innerDiameter, facets]} />
-      <meshStandardMaterial
-        attach="material"
-        side={DoubleSide}
-        color={color}
-      />
-    </mesh>
+    <line layers={14}>
+      <bufferGeometry>
+        <bufferAttribute
+          attachObject={["attributes", "position"]}
+          count={128}
+          array={vertices}
+          itemSize={3}
+        />
+      </bufferGeometry>
+    </line>
   );
 }
 

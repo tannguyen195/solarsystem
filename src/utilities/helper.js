@@ -16,3 +16,8 @@ export function getPlanetByName(planetName) {
     return planet.name === planetName;
   });
 }
+
+const { detect } = require('detect-browser');
+
+export const browser = detect();
+

@@ -13,7 +13,6 @@ function Planet({
   texture,
   distanceScale,
   axialTilt,
-  orbitData,
   layers,
   planetGeometry,
 }) {
@@ -41,6 +40,7 @@ function Planet({
   return (
     <group>
       <mesh
+        userData={true}
         layers={layers}
         scale={size}
         rotation={axialTilt}
@@ -49,14 +49,14 @@ function Planet({
         ref={ref}
       >
         {planetGeometry}
-        <meshPhongMaterial
+        <meshStandardMaterial
           attach="material"
           {...planetMaterial}
           shininess={0}
           bumpScale={0.3}
         />
-      </mesh>{" "}
-      <OrbitRing {...orbitData} layers={layers} />
+      </mesh>
+      <OrbitRing radius={distanceScale} layers={layers} />
       {name === "saturn" && <SaturnRing layers={layers} />}
     </group>
   );

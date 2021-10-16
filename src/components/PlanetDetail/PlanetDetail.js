@@ -11,7 +11,7 @@ function PlanetDetail() {
     setActivePlanetState(activePlanet);
     if (!activePlanet && toggleGalaxy) setActivePlanetState(galaxyData);
   }, [activePlanet, toggleGalaxy]);
-  console.log(activePlanetState);
+
   return (
     <>
       {activePlanetState && (

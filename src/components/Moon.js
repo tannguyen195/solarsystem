@@ -12,7 +12,7 @@ function Moon({
   distanceScale,
   axialTilt,
   planetGeometry,
-  layer,
+  layers,
   sphere,
 }) {
   const planetMaterial = useTexture({ map: texture });
@@ -41,7 +41,7 @@ function Moon({
   return (
     <mesh
       geometry={sphere}
-      layers={layer}
+      layers={layers}
       scale={size}
       rotation={axialTilt}
       name={name}
@@ -49,7 +49,7 @@ function Moon({
       ref={ref}
     >
       {planetGeometry}
-      <meshPhongMaterial
+      <meshStandardMaterial
         attach="material"
         {...planetMaterial}
         shininess={0}

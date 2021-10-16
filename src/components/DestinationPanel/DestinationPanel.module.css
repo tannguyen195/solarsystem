@@ -36,6 +36,21 @@
   transform: scale(1.2) !important;
 }
 
+.subPanel {
+  position: absolute;
+  z-index: 20;
+  top: 5vh;
+  left: 2vw;
+}
+.subOption {
+  display: flex;
+  align-items: center;
+  width: 5vw;
+  padding: 10px;
+  cursor: pointer;
+  flex-direction: row;
+}
+
 @media only screen and (max-width: 600px) {
   .panel {
     width: 100%;
@@ -60,19 +75,7 @@
   .name {
     font-size: 12px;
   }
-}
-
-.subPanel {
-  position: absolute;
-  z-index: 20;
-  top: 5vh;
-  left: 2vw;
-}
-.subOption {
-  display: flex;
-  align-items: center;
-  width: 5vw;
-  padding: 10px;
-  cursor: pointer;
-  flex-direction: row;
+  .subOption {
+    width: 15vw ;
+  }
 }

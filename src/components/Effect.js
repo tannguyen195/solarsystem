@@ -1,14 +1,32 @@
-import {
-  Bloom,
-  EffectComposer,
-} from "@react-three/postprocessing";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
+import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
+import { useFrame, useThree, extend } from "@react-three/fiber";
+import {  useEffect, useRef } from "react";
+
+extend({ EffectComposer, RenderPass, UnrealBloomPass, FilmPass, ShaderPass });
 
 const Effect = () => {
+  const composer = useRef();
+  const { scene, gl, size, camera } = useThree();
+  useEffect(
+    () => void composer.current.setSize(size.width, size.height),
+    [size]
+  );
+  useFrame(({ camera, scene }) => {
+    composer.current.render();
+  }, 2);
+
   return (
-    
-    <EffectComposer >
-      <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} />
-    </EffectComposer>
+    <effectComposer ref={composer} args={[gl]}>
+      <renderPass attachArray="passes" scene={scene} camera={camera} />
+      <unrealBloomPass
+        attachArray="passes"
+        args={[undefined, 1, 1, 0.9]}
+      />
+    </effectComposer>
   );
 };
 

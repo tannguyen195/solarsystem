@@ -4,8 +4,6 @@ import { useTexture } from "@react-three/drei";
 import useStore from "../store/useStore";
 import * as THREE from "three";
 import OrbitRing from "./OrbitRing";
-import { earthData } from "../utilities/planetData";
-
 function Earth({
   name,
   rotationRate,
@@ -22,7 +20,6 @@ function Earth({
   const planetMaterial = useTexture({
     map: texture,
     bumpMap: bumpMap,
-    specularMap: specularMap,
   });
   const cloudMaterial = useTexture({
     map: earthCloud,
@@ -54,8 +51,9 @@ function Earth({
         ref={ref}
       >
         {planetGeometry}
-        <meshPhongMaterial
+        <meshStandardMaterial
           attach="material"
+          fog={false}
           {...planetMaterial}
           shininess={0}
           bumpScale={0.005}
@@ -63,15 +61,16 @@ function Earth({
         />
         <mesh layers={2}>
           <sphereBufferGeometry args={[size + 0.005, 48, 48]} />
-          <meshPhongMaterial
+          <meshStandardMaterial
             {...cloudMaterial}
+            fog={false}
             attach="material"
             transparent={true}
           />
         </mesh>
       </mesh>
 
-      <OrbitRing {...earthData.orbitData} layers={2} />
+      <OrbitRing radius={distanceScale} layers={2} />
     </>
   );
 }

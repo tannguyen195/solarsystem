@@ -1,3 +1,4 @@
+import sunTexture from "../assets/textures/texture_sun.jpeg";
 import earthTexture from "../assets/textures/texture_earth.jpg";
 import moonTexture from "../assets/textures/texture_moon.jpeg";
 import venusTexture from "../assets/textures/texture_venus.jpeg";
@@ -25,14 +26,13 @@ export const galaxyData = {
       value: "52,850 light years",
     },
     {
-      title:"Age",
-      value: "13.51 billion years"
+      title: "Age",
+      value: "13.51 billion years",
     },
     {
-      title:"Number of stars",
-      value: "100–400 billion"
+      title: "Number of stars",
+      value: "100–400 billion",
     },
-    
   ],
   layers: 11,
   size: 1,
@@ -42,6 +42,7 @@ export const sunData = {
   layers: 1,
   size: sunRadius,
   orbitRate: 230,
+  texture: sunTexture,
   data: [
     {
       title: "Distance from Earth",
@@ -102,14 +103,6 @@ export const earthData = {
   ],
 
   desc: `Earth—our home planet—is the only place we know of so far that’s inhabited by living things. It's also the only planet in our solar system with liquid water on the surface.`,
-  orbitData: {
-    size: 1 * distanceScale + orbitWidth + sunRadius,
-    innerDiameter: 1 * distanceScale - orbitWidth + sunRadius,
-    facets: 320,
-    color: 0xffffff,
-    name: "earthOrbit",
-    distance: 0,
-  },
   bumpMap: earthBumpmap,
   specularMap: earthSpecular,
   normalMap: earthNormal,
@@ -146,14 +139,6 @@ export const moonData = {
   distance: 0.000025,
 
   desc: `Earth's Moon is the only place beyond Earth where humans have set foot, so far. The Moon makes our planet more livable by moderating how much it wobbles on its axis.`,
-  orbitData: {
-    size: 0.00246 * distanceScale + orbitWidth + sunRadius,
-    innerDiameter: 0.00246 * distanceScale - orbitWidth + sunRadius,
-    facets: 320,
-    color: 0xffffff,
-    name: "moonOrbit",
-    distance: 0,
-  },
 };
 
 export const planets = [
@@ -199,14 +184,6 @@ export const planets = [
 
     distance: 0.4,
     desc: `Mercury—the smallest planet in our solar system and closest to the Sun—is only slightly larger than Earth's Moon. Mercury is the fastest planet, zipping around the Sun every 88 Earth days.`,
-    orbitData: {
-      size: 0.4 * distanceScale + orbitWidth + sunRadius,
-      innerDiameter: 0.4 * distanceScale - orbitWidth + sunRadius,
-      facets: 320,
-      color: 0xffffff,
-      name: "mercuryOrbit",
-      distance: 0,
-    },
   },
   {
     name: "venus",
@@ -302,14 +279,6 @@ export const planets = [
 
     distance: 1.5,
     desc: `Mars is a dusty, cold, desert world with a very thin atmosphere. There is strong evidence Mars was—billions of years ago—wetter and warmer, with a thicker atmosphere.`,
-    orbitData: {
-      size: 1.5 * distanceScale + orbitWidth + sunRadius,
-      innerDiameter: 1.5 * distanceScale - orbitWidth + sunRadius,
-      facets: 320,
-      color: 0xffffff,
-      name: "marsOrbit",
-      distance: 0,
-    },
   },
   {
     name: "jupiter",
@@ -353,14 +322,6 @@ export const planets = [
     ],
     distance: 5.2,
     desc: `Jupiter is more than twice as massive than the other planets of our solar system combined. The giant planet's Great Red spot is a centuries-old storm bigger than Earth.`,
-    orbitData: {
-      size: 5.2 * distanceScale + orbitWidth + sunRadius,
-      innerDiameter: 5.2 * distanceScale - orbitWidth + sunRadius,
-      facets: 320,
-      color: 0xffffff,
-      name: "jupiterOrbit",
-      distance: 0,
-    },
   },
   {
     name: "saturn",
@@ -406,14 +367,6 @@ export const planets = [
     distance: 9.5,
 
     desc: `Adorned with a dazzling, complex system of icy rings, Saturn is unique in our solar system. The other giant planets have rings, but none are as spectacular as Saturn's.`,
-    orbitData: {
-      size: 9.5 * distanceScale + orbitWidth + sunRadius,
-      innerDiameter: 9.5 * distanceScale - orbitWidth + sunRadius,
-      facets: 320,
-      color: 0xffffff,
-      name: "saturnOrbit",
-      distance: 0,
-    },
   },
   {
     name: "uranus",
@@ -459,14 +412,6 @@ export const planets = [
     moonNumber: 27,
     distance: 19.8,
     desc: `Uranus—seventh planet from the Sun—rotates at a nearly 90-degree angle from the plane of its orbit. This unique tilt makes Uranus appear to spin on its side.`,
-    orbitData: {
-      size: 19.8 * distanceScale + orbitWidth + sunRadius,
-      innerDiameter: 19.8 * distanceScale - orbitWidth + sunRadius,
-      facets: 320,
-      color: 0xffffff,
-      name: "uranusOrbit",
-      distance: 0,
-    },
   },
   {
     name: "neptune",
@@ -511,13 +456,5 @@ export const planets = [
 
     distance: 30.1,
     desc: `Neptune—the eighth and most distant major planet orbiting our Sun—is dark, cold and whipped by supersonic winds. It was the first planet located through mathematical calculations, rather than by telescope.`,
-    orbitData: {
-      size: 30.1 * distanceScale + orbitWidth + sunRadius,
-      innerDiameter: 30.1 * distanceScale - orbitWidth + sunRadius,
-      facets: 320,
-      color: 0xffffff,
-      name: "neptuneOrbit",
-      distance: 0,
-    },
   },
 ];

@@ -39,7 +39,7 @@ export default function fragment() {
 
    float fres = Fresnel(eyeVector, vNormal);
 
-   brightness += pow(fres,0.8);
+   brightness += pow(fres,2.8);
 
    vec3 col = brightnessToColor(brightness);
 
