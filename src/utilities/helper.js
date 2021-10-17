@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import useStore from "../store/useStore";
 import {
   planets,
   earthData,
@@ -30,4 +31,16 @@ export function generatePointCircle(radius) {
     vertices.push([Math.cos(theta) * radius, 0, Math.sin(theta) * radius]);
   }
   return vertices;
+}
+
+export function playAudio(audio, volume = 1, loop = false) {
+  if (useStore.getState().mute) {
+    console.log("mutre")
+    audio.pause();
+  } else {
+    audio.currentTime = 0;
+    audio.volume = volume;
+    audio.loop = loop;
+    audio.play();
+  }
 }

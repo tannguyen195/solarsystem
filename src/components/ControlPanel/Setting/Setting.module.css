@@ -1,0 +1,12 @@
+.root {
+  position: absolute;
+  z-index: 20;
+  bottom: 2vh;
+  color: white;
+  left: 2vw;
+}
+
+.image {
+  width: 30px;
+  cursor: pointer;
+}

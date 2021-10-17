@@ -1,4 +1,4 @@
-import styles from "./DestinationPanel.module.css";
+import styles from "./Destination.module.css";
 
 import Hoverable from "./Hoverable";
 

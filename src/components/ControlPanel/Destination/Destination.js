@@ -1,9 +1,9 @@
-import styles from "./DestinationPanel.module.css";
+import styles from "./Destination.module.css";
 import { useEffect, useState } from "react";
 import Option from "./Option";
 import { panel1, panel2 } from "./data";
-import useStore from "../../store/useStore";
-import { getPlanetByName } from "../../utilities/helper";
+import useStore from "../../../store/useStore";
+import { getPlanetByName } from "../../../utilities/helper";
 
 import {
   useTransition,

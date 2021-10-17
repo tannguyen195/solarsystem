@@ -1,5 +1,12 @@
 
 const createControlSlice = (set, get) => ({
+
+  mute: true,
+  setMute: (payload) => {
+    set(() => ({ mute: payload }));
+  },
+
+
   isRendered: false,
   setIsRendered: (payload) => {
     set(() => ({ isRendered: payload }));

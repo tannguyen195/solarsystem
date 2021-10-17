@@ -7,12 +7,10 @@ import CameraControl from "./components/CameraControl/index";
 import Lights from "./components/Lights";
 import TrackballControl from "./components/TrackballControl";
 import Fallback from "./components/Fallback/Fallback";
-import DestinationPanel from "./components/DestinationPanel/DestinationPanel";
+import ControlPanel from "./components/ControlPanel";
 import useStore from "./store/useStore";
 import PlanetDetail from "./components/PlanetDetail/PlanetDetail";
 import useDeviceDetector from "./hooks/deviceDetector";
-import spaceSound from "./assets/sounds/space.mp3";
-const space = new Audio(spaceSound);
 
 //import Effect from "./components/Effect";
 
@@ -24,12 +22,6 @@ function App() {
   const cameraPosition = useStore((state) => state.cameraPos);
   const setIsRendered = useStore((state) => state.setIsRendered);
 
-  function playAudio(audio, volume = 1, loop = false) {
-    audio.currentTime = 0;
-    audio.volume = volume;
-    audio.loop = loop;
-    audio.play();
-  }
 
   function Loader() {
     const { progress } = useProgress();
@@ -37,41 +29,43 @@ function App() {
       //Update when loading finish
 
       if (progress === 100) {
-        void playAudio(space, 0.5, true);
         setIsRendered(true);
       }
     }, [progress]);
 
     return <Fallback progress={progress} />;
   }
+
   return (
     <>
       {device !== "Mobile" && <PlanetDetail />}
-      <DestinationPanel />
+      <ControlPanel />
       <Loader />
+      
+        <Canvas
+          id="canvas"
+          invalidateFrameloop
+          dpr={[1, 2]}
+          colorManagement
+          style={{ background: "#000" }}
+          camera={{
+            position: cameraPosition,
+            near: 0.001,
+            far: 900000,
+            layers: 0,
+          }}
+        >
+          {process.env.NODE_ENV === "development" && <Stats />}
 
-      <Canvas
-        invalidateFrameloop
-        dpr={[1, 2]}
-        colorManagement
-        style={{ background: "#000" }}
-        camera={{
-          position: cameraPosition,
-          near: 0.001,
-          far: 900000,
-          layers: 0,
-        }}
-      >
-        {process.env.NODE_ENV === "development" && <Stats />}
-
-        <Lights />
-        {/* <Effect /> */}
-        <CameraControl />
-        <TrackballControl />
-        <Suspense fallback={null}>
-          <Scene />
-        </Suspense>
-      </Canvas>
+          <Lights />
+          {/* <Effect /> */}
+          <CameraControl />
+          <TrackballControl />
+          <Suspense fallback={null}>
+            <Scene />
+          </Suspense>
+        </Canvas>
+    
     </>
   );
 }

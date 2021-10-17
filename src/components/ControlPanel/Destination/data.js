@@ -1,14 +1,14 @@
-import sunThumbnail from "../../assets/images/sun.png";
-import earthThumbnail from "../../assets/images/earth.png";
-import moonThumbnail from "../../assets/images/moon.png";
-import venusThumbnail from "../../assets/images/venus.png";
-import mercuryThumbnail from "../../assets/images/mercury.png";
-import jupiterThumbnail from "../../assets/images/jupiter.png";
-import saturnThumbnail from "../../assets/images/saturn.png";
-import uranusThumbnail from "../../assets/images/uranus.png";
-import neptuneThumbnail from "../../assets/images/neptune.png";
-import marsThumbnail from "../../assets/images/mars.png";
-import galaxyThumbnail from "../../assets/images/galaxy.png";
+import sunThumbnail from "../../../assets/images/sun.png";
+import earthThumbnail from "../../../assets/images/earth.png";
+import moonThumbnail from "../../../assets/images/moon.png";
+import venusThumbnail from "../../../assets/images/venus.png";
+import mercuryThumbnail from "../../../assets/images/mercury.png";
+import jupiterThumbnail from "../../../assets/images/jupiter.png";
+import saturnThumbnail from "../../../assets/images/saturn.png";
+import uranusThumbnail from "../../../assets/images/uranus.png";
+import neptuneThumbnail from "../../../assets/images/neptune.png";
+import marsThumbnail from "../../../assets/images/mars.png";
+import galaxyThumbnail from "../../../assets/images/galaxy.png";
 
 export const panel2 = [
   {
